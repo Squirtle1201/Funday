@@ -20,26 +20,25 @@
     </style>
 </head>
 <body>
-    <video id="prankVideo" controls autoplay>
+    <video id="prankVideo" controls autoplay onended="goFullscreen()">
         <source src="NT_SIR_V1.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        function goFullscreen() {
             var video = document.getElementById('prankVideo');
-            video.addEventListener('click', function() {
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) { /* Firefox */
-                    video.mozRequestFullScreen();
-                } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) { /* IE/Edge */
-                    video.msRequestFullscreen();
-                }
-            });
-        });
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { /* Firefox */
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { /* IE/Edge */
+                video.msRequestFullscreen();
+            }
+        }
     </script>
 </body>
 </html>
+
