@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAPPY BIRTHDAY SIR</title>
+    <title>Autoplay Video</title>
     <style>
         body, html {
             margin: 0;
@@ -20,28 +20,24 @@
     </style>
 </head>
 <body>
-    <video id="prankVideo" controls muted playsinline autoplay>
+    <video id="prankVideo" controls autoplay onended="goFullscreen()">
         <source src="NT_SIR_V1.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        function goFullscreen() {
             var video = document.getElementById('prankVideo');
-            
-            // Function to unmute the video
-            function unmuteVideo() {
-                video.muted = false;
-                // Start playback after unmuting
-                video.play();
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { /* Firefox */
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { /* IE/Edge */
+                video.msRequestFullscreen();
             }
-
-            // Listen for user interaction to unmute the video
-            document.addEventListener('click', unmuteVideo);
-
-            // Uncomment the line below if you want to unmute the video after a specific delay (e.g., 3 seconds)
-            // setTimeout(unmuteVideo, 3000);
-        });
+        }
     </script>
 </body>
 </html>
