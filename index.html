@@ -29,17 +29,18 @@
         document.addEventListener('DOMContentLoaded', function () {
             var video = document.getElementById('prankVideo');
             
-            // Ensure the video is muted (important for autoplay)
-            video.muted = true;
+            // Function to unmute the video
+            function unmuteVideo() {
+                video.muted = false;
+                // Start playback after unmuting
+                video.play();
+            }
 
             // Listen for user interaction to unmute the video
-            document.addEventListener('click', function() {
-                if (video.muted) {
-                    video.muted = false;
-                    // Start playback after unmuting
-                    video.play();
-                }
-            });
+            document.addEventListener('click', unmuteVideo);
+
+            // Uncomment the line below if you want to unmute the video after a specific delay (e.g., 3 seconds)
+            // setTimeout(unmuteVideo, 3000);
         });
     </script>
 </body>
